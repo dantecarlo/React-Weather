@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Form() {
-  const handleChange = (e: any) => {}
+  const [search, setSearch] = useState({
+    city: '',
+    country: '',
+  })
+
+  const handleChange = (e: any) => {
+    setSearch({
+      ...search,
+      [e.target.name]: e.target.value,
+    })
+  }
 
   return (
     <form className="input-filed col s12">
@@ -23,7 +33,11 @@ function Form() {
       </div>
 
       <div className="input-field col s12">
-        <input type="submit" className="waves-effect waves-light btn-large btn-block yellow accent-4" value="Search Weather" />
+        <input
+          type="submit"
+          className="waves-effect waves-light btn-large btn-block yellow accent-4"
+          value="Search Weather"
+        />
       </div>
     </form>
   )

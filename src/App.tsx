@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Header from './components/Header'
 import Form from './components/Form'
+import Error from './components/Error'
 
 const App: React.FC = () => {
   const [city, setCity] = useState('')
@@ -29,6 +30,11 @@ const App: React.FC = () => {
             <div className="col s12 m6">
               <Form getFormData={getFormData}></Form>
             </div>
+            {error && (
+              <div className="col s12 m6">
+                <Error message="All field are required"></Error>
+              </div>
+            )}
           </div>
         </div>
       </div>

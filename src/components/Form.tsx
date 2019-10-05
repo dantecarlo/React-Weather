@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 
-function Form() {
+interface FormProps {
+  getFormData(data: any): any
+}
+
+function Form({ getFormData }: FormProps) {
   const [search, setSearch] = useState({
     city: '',
     country: '',
@@ -13,15 +17,20 @@ function Form() {
     })
   }
 
+  const getWeather = (e: any) => {
+    e.preventDefault()
+    getFormData(search)
+  }
+
   return (
-    <form className="input-filed col s12">
+    <form onSubmit={getWeather}>
       <div className="input-field col s12">
         <input type="text" name="city" id="city" onChange={handleChange} />
         <label htmlFor="city">City: </label>
       </div>
 
       <div className="input-field col s12">
-        <select name="city" id="" onChange={handleChange}>
+        <select name="country" onChange={handleChange}>
           <option value="">Select a country</option>
           <option value="PE">Peru</option>
           <option value="AR">Argentina</option>
